@@ -56,7 +56,7 @@ This project utilizes the following tools for management, documentation, and aut
 ---
 
 ### 🧩5. Repository Structure
-
+~~~
 📂 DEPI-Swag-Labs-Testing
 ├── 📁 1-Documentation
 │   ├── Test_Plan.pdf
@@ -67,7 +67,7 @@ This project utilizes the following tools for management, documentation, and aut
 ├── 📁 3-Automation
 │   └── (Automation Scripts)
 └── README.md
-
+~~~
 ---
 
 ### 6. Quick Links
