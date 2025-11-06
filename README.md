@@ -29,7 +29,7 @@ Our team consists of four QA Testers, with responsibilities divided as follows:
 | **Aml Ahmed** | QA Tester | **US-03:** Cart Page <br> **US-04:** Checkout: Your Information |
 | **Ahmed Akram** | QA Tester | **US-01:** Login Page |
 | **Esraa Sameh** | QA Tester | **US-02:** Products Page |
-| **Farah** | QA Tester | **US-05:** Checkout Overview Page <br> **US-06:** Checkout Complete Page |
+| **Farah Magdy** | QA Tester | **US-05:** Checkout Overview Page <br> **US-06:** Checkout Complete Page |
 
 ---
 
