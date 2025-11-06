@@ -6,11 +6,11 @@
 
 ---
 
-### 1. Project Overview
+### 📖1. Project Overview
 
 This project is the final graduation submission for the **[Digital Egypt Pioneers (DEPI)](https://depi.gov.eg/)** initiative, provided by the Egyptian Ministry of Communications and Information Technology (MCIT).
 
-Our project focuses on applying the complete Software Testing Life Cycle (STLC) to the **Swag Labs** e-commerce demo website. The primary objective is to conduct comprehensive manual testing to ensure all core user stories function correctly and to document all test artifacts and findings.
+Our project focuses on applying the complete Software Testing Life Cycle (STLC) to the **Swag Labs** e-commerce website. The primary objective is to conduct comprehensive manual and automation testing to ensure all core user stories function correctly and to document all test artifacts and findings.
 
 ---
 
@@ -33,7 +33,7 @@ Our team consists of four QA Testers, with responsibilities divided as follows:
 
 ---
 
-### 4. Tools & Technology Stack
+### ⚙️ 4. Tools & Technology Stack
 
 This project utilizes the following tools for management, documentation, and automation:
 
@@ -55,10 +55,22 @@ This project utilizes the following tools for management, documentation, and aut
 
 ---
 
-### 5. Repository Structure
+### 🧩5. Repository Structure
 
-The repository is organized into three main folders as per our Test Plan:
-/DEPI-Swag-Labs-Testing │ ├── 1-Documentation/ │ ├── Test_Plan.pdf │ ├── RTM.xlsx │ └── Test_Summary_Report.pdf │ ├── 2-Manual/ │ └── Jira_Export.csv │ ├── 3-Automation/ │ └── (Automation Scripts) │ └── README.md
+/DEPI-Swag-Labs-Testing
+│
+├── 1-Documentation/
+│   ├── Test_Plan.pdf
+│   ├── RTM.xlsx
+│   └── Test_Summary_Report.pdf
+│
+├── 2-Manual/
+│   └── Jira_Export.csv
+│
+├── 3-Automation/
+│   └── (Automation Scripts)
+│
+└── README.md
 ---
 
 ### 6. Quick Links
@@ -68,7 +80,7 @@ The repository is organized into three main folders as per our Test Plan:
 
 ---
 
-### 7. How to Run (Automation - Future Scope)
+### 🚀 7. How to Run (Automation - Future Scope)
 
 This section details the steps to run the automation test scripts once they are developed using the Maven framework.
 
