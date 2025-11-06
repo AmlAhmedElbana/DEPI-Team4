@@ -57,20 +57,17 @@ This project utilizes the following tools for management, documentation, and aut
 
 ### 🧩5. Repository Structure
 
-/DEPI-Swag-Labs-Testing
-│
-├── 1-Documentation/
+📂 DEPI-Swag-Labs-Testing
+├── 📁 1-Documentation
 │   ├── Test_Plan.pdf
 │   ├── RTM.xlsx
 │   └── Test_Summary_Report.pdf
-│
-├── 2-Manual/
+├── 📁 2-Manual
 │   └── Jira_Export.csv
-│
-├── 3-Automation/
+├── 📁 3-Automation
 │   └── (Automation Scripts)
-│
 └── README.md
+
 ---
 
 ### 6. Quick Links
