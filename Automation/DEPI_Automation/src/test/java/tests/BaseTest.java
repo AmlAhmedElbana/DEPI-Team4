@@ -1,9 +1,9 @@
 package tests;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.pages.DriverFactory;
 import org.pages.LoginPage;
 
 public class BaseTest {
@@ -12,9 +12,12 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        // استخدام DriverFactory بدل ما نعمل ChromeDriver مباشرة
+        driver = DriverFactory.getDriver();
         driver.get("https://www.saucedemo.com/");
+
+        // إنشاء صفحة اللوجين وتمرير الدرايفر ليها
+        loginPage = new LoginPage(driver);
     }
 
     @AfterClass
