@@ -1,4 +1,4 @@
-package org.pages;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -36,14 +36,15 @@ public class LoginPage {
     public void clickLogin() {
         driver.findElement(loginButton).click();
     }
-    public void login(String username, String password) {
+    public ProductsPage login(String username, String password) {
         enterUsername(username);
         enterPassword(password);
         clickLogin();
 
-        // ننتظر لحد ما عنوان الصفحة يحتوي على inventory.html
+
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.urlContains("inventory.html"));
+        return new ProductsPage(driver);
     }
 
     public String getErrorMessage() {
@@ -51,6 +52,7 @@ public class LoginPage {
         WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage));
         return errorElement.getText();
     }
+
 
 }
 
