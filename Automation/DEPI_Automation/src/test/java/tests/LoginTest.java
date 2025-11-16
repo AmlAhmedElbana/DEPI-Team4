@@ -1,15 +1,16 @@
 package tests;
 
+import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.pages.LoginPage;
+import pages.LoginPage;
+import utils.DataProviders;
 
-public class LoginPageTest extends BaseTest {
+public class LoginTest extends BaseTest {
 
-    @Test
-    public void validLoginShouldOpenProductsPage() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("standard_user", "secret_sauce");
+    @Test(dataProvider = "standardUser", dataProviderClass = DataProviders.class)
+    public void validLoginShouldOpenProductsPage(String name, String password) {
+        loginPage.login(name, password);
 
         String currentUrl = driver.getCurrentUrl();
         Assert.assertNotNull(currentUrl);
@@ -17,11 +18,10 @@ public class LoginPageTest extends BaseTest {
                 " لم يتم الانتقال إلى صفحة المنتجات بعد تسجيل الدخول!");
     }
 
-    @Test
-    public void invalidLoginShouldShowErrorMessage() {
-        driver.get("https://www.saucedemo.com/");
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("wrong_user", "wrong_password");
+    @Test(dataProvider = "problemUser", dataProviderClass = DataProviders.class)
+    public void invalidLoginShouldShowErrorMessage(String name, String password) {
+
+        loginPage.login(name, password);
 
         String error = loginPage.getErrorMessage();
         Assert.assertTrue(error.contains("Epic sadface"),
