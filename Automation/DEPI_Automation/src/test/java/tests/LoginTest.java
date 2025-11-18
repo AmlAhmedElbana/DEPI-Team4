@@ -6,9 +6,10 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import utils.DataProviders;
 
+@Test(groups = {"noLoginRequired"})
 public class LoginTest extends BaseTest {
 
-    @Test(dataProvider = "standardUser", dataProviderClass = DataProviders.class)
+    @Test(priority = 1,dataProvider = "standardUser", dataProviderClass = DataProviders.class)
     public void validLoginShouldOpenProductsPage(String name, String password) {
         loginPage.login(name, password);
 
@@ -18,7 +19,7 @@ public class LoginTest extends BaseTest {
                 " لم يتم الانتقال إلى صفحة المنتجات بعد تسجيل الدخول!");
     }
 
-    @Test(dataProvider = "problemUser", dataProviderClass = DataProviders.class)
+    @Test(priority = 2,dataProvider = "lockedOutUser", dataProviderClass = DataProviders.class)
     public void invalidLoginShouldShowErrorMessage(String name, String password) {
 
         loginPage.login(name, password);
