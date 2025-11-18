@@ -36,15 +36,14 @@ public class LoginPage {
     public void clickLogin() {
         driver.findElement(loginButton).click();
     }
-    public ProductsPage login(String username, String password) {
+    public void login(String username, String password) {
         enterUsername(username);
         enterPassword(password);
         clickLogin();
 
+       /* new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.urlContains("inventory.html"));*/
 
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.urlContains("inventory.html"));
-        return new ProductsPage(driver);
     }
 
     public String getErrorMessage() {
@@ -52,7 +51,12 @@ public class LoginPage {
         WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage));
         return errorElement.getText();
     }
-
+    public ProductsPage loginAsStandardUser(String username, String password) {
+        enterUsername(username);
+        enterPassword(password);
+        clickLogin();
+        return new ProductsPage(driver);
+    }
 
 }
 

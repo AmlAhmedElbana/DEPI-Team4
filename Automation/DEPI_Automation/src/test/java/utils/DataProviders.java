@@ -9,10 +9,11 @@ public class DataProviders {
                 {"standard_user","secret_sauce"}
         };
     }
-    @DataProvider(name = "problemUser")
-    public Object[][] getProblemUser(){
+
+    @DataProvider(name = "lockedOutUser")
+    public Object[][] getLockedOutUser(){
         return new Object[][]{
-                {"problem_user","secret_sauce"}
+                {"locked_out_user","secret_sauce"}
         };
     }
     @DataProvider(name = "validCheckoutInfo")

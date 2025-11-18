@@ -10,6 +10,7 @@ import java.util.List;
 public class ProductsPage {
     private final WebDriver driver;
 
+
     @FindBy(className = "inventory_item_name")
     private List<WebElement> productTitles;
 
@@ -31,6 +32,7 @@ public class ProductsPage {
     }
 
     public boolean areProductsDisplayed() {
+
         return !productTitles.isEmpty();
     }
     // Add a product to cart, to be used in other test pages
@@ -68,4 +70,5 @@ public class ProductsPage {
         cartIcon.click();
         return new CartPage(driver);
     }
+
 }

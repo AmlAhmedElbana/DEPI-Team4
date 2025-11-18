@@ -21,9 +21,7 @@ public class BaseTest {
     protected CartPage cartPage;
     protected CheckoutInfoPage checkoutInfoPage;
 
-
-    @BeforeMethod
-    public void setup() {
+    private void launchBrowser(){
         driver = new ChromeDriver();
 
         driver.manage().window().maximize();
@@ -32,13 +30,17 @@ public class BaseTest {
         driver.get("https://www.saucedemo.com/v1/index.html");
 
         loginPage = new LoginPage(driver);
+    }
 
-        productsPage = loginPage.login("standard_user", "secret_sauce");
+    @BeforeMethod(onlyForGroups = {"loginRequired"})
+    public void requiredSetup(){
+        launchBrowser();
+        productsPage = loginPage.loginAsStandardUser("standard_user", "secret_sauce");
+    }
 
-        cartPage = new CartPage(driver);
-        checkoutInfoPage = new CheckoutInfoPage(driver);
-
-
+    @BeforeMethod(onlyForGroups = {"noLoginRequired"})
+    public void setup() {
+       launchBrowser();
     }
 
 
