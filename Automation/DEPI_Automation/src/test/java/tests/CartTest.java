@@ -36,4 +36,14 @@ public class CartTest extends BaseTest {
         String currentUrl = driver.getCurrentUrl();
         Assert.assertNotEquals(currentUrl, "https://www.saucedemo.com/cart.html", "User was navigated away from cart page");
     }
+    @Test(priority = 4)
+    public void testCheckoutWithAddedProduct(){
+        productsPage.addFirstProductToCart();
+        productsPage.goToCart();
+        cartPage.clickCheckout();
+
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals(currentUrl, "https://www.saucedemo.com/checkout-step-one.html");
+    }
+
 }

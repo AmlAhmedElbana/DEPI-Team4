@@ -22,6 +22,9 @@ public class CheckoutInfoPage {
     @FindBy(id = "continue")
     private WebElement continueButton;
 
+    @FindBy(id = "cancel")
+    private WebElement cancelButton;
+
     @FindBy(css = "h3[data-test='error']")
     private WebElement errorMessage;
 
@@ -47,6 +50,8 @@ public class CheckoutInfoPage {
     public void clickContinue() {
         continueButton.click();
     }
+
+    public void clickCancel(){cancelButton.click();}
 
     public String getErrorMessage() {
         return errorMessage.getText();
