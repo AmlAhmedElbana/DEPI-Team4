@@ -22,7 +22,18 @@ public class CheckoutInfoTest extends BaseTest {
         Assert.assertEquals(currentUrl, "https://www.saucedemo.com/checkout-step-two.html");
     }
 
-    @Test(priority = 2, dataProvider = "invalidCheckoutInfo", dataProviderClass = DataProviders.class)
+    @Test(priority = 2)
+    public void testCancelButtonFunctionality(){
+        productsPage.addFirstProductToCart();
+        productsPage.goToCart();
+        cartPage.clickCheckout();
+        checkoutInfoPage.clickCancel();
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals(currentUrl, "https://www.saucedemo.com/cart.html");
+
+    }
+
+    @Test(priority = 3, dataProvider = "invalidCheckoutInfo", dataProviderClass = DataProviders.class)
     public void testCheckoutInfoValidationMessages(String fName, String lName, String pCode, String expectedError) {
 
         productsPage.addFirstProductToCart();
@@ -36,4 +47,5 @@ public class CheckoutInfoTest extends BaseTest {
         String actualError = checkoutInfoPage.getErrorMessage();
         Assert.assertEquals(actualError, expectedError);
     }
+
 }
