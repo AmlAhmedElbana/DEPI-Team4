@@ -1,50 +1,38 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class CartPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
-
-    @FindBy(id = "continue-shopping")
-    private WebElement continueShoppingButton;
-
-    @FindBy(id = "checkout")
-    private WebElement checkoutButton;
-
-    @FindBy(id = "remove-sauce-labs-backpack")
-    private WebElement removeBackpackButton;
-
-    @FindBy(className = "inventory_item_name")
-    private WebElement firstItemName;
-
+    private final By continueShoppingButton= By.id("continue-shopping");
+    private final By checkoutButton=By.id("checkout");
+    private final By removeBackpackButton=By.id("remove-sauce-labs-backpack");
+    private final By firstItemName=By.className("inventory_item_name");
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
 
     public ProductsPage clickContinueShopping() {
-        continueShoppingButton.click();
+        driver.findElement(continueShoppingButton).click();
         return new ProductsPage(driver);
     }
 
     public void removeFirstItem() {
 
-        removeBackpackButton.click();
+        driver.findElement(removeBackpackButton).click();
     }
-    /// forward to checkoutinfo
+
     public CheckoutInfoPage clickCheckout() {
-        checkoutButton.click();
+        driver.findElement(checkoutButton).click();
         return new CheckoutInfoPage(driver);
     }
 
     public String getFirstItemName() {
-        return firstItemName.getText();
+        return driver.findElement(firstItemName).getText();
     }
 }

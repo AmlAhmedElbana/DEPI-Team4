@@ -1,63 +1,48 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class CheckoutInfoPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
-
-    @FindBy(id = "first-name")
-    private WebElement firstNameField;
-
-    @FindBy(id = "last-name")
-    private WebElement lastNameField;
-
-    @FindBy(id = "postal-code")
-    private WebElement postalCodeField;
-
-    @FindBy(id = "continue")
-    private WebElement continueButton;
-
-    @FindBy(id = "cancel")
-    private WebElement cancelButton;
-
-    @FindBy(css = "h3[data-test='error']")
-    private WebElement errorMessage;
+    private final By firstNameField= By.id("first-name");
+    private final By lastNameField=By.id("last-name");
+    private final By postalCodeField=By.id("postal-code");
+    private final By continueButton=By.id("continue");
+    private final By cancelButton=By.id("cancel");
+    private final By errorMessage= By.cssSelector("h3[data-test='error']");
 
 
     public CheckoutInfoPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
 
     public void enterFirstName(String firstName) {
-        firstNameField.sendKeys(firstName);
+        driver.findElement(firstNameField).sendKeys(firstName);
     }
 
     public void enterLastName(String lastName) {
-        lastNameField.sendKeys(lastName);
+        driver.findElement(lastNameField).sendKeys(lastName);
     }
 
     public void enterPostalCode(String postalCode) {
-        postalCodeField.sendKeys(postalCode);
+        driver.findElement(postalCodeField).sendKeys(postalCode);
     }
 
     public void clickContinue() {
-        continueButton.click();
+        driver.findElement(continueButton).click();
     }
 
-    public void clickCancel(){cancelButton.click();}
+    public void clickCancel(){driver.findElement(cancelButton).click();}
 
     public String getErrorMessage() {
-        return errorMessage.getText();
+        return driver.findElement(errorMessage).getText();
     }
 
-   ///  forward to Overview page
+
     public CheckoutOverviewPage fillInfoAndContinue(String fName, String lName, String pCode) {
         enterFirstName(fName);
         enterLastName(lName);

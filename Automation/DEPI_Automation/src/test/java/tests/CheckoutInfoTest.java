@@ -19,7 +19,7 @@ public class CheckoutInfoTest extends BaseTest {
         checkoutInfoPage.fillInfoAndContinue(fName, lName, pCode);
 
         String currentUrl = driver.getCurrentUrl();
-        Assert.assertEquals(currentUrl, "https://www.saucedemo.com/checkout-step-two.html");
+        Assert.assertEquals(currentUrl, "https://www.saucedemo.com/checkout-step-one.html");
     }
 
     @Test(priority = 2)
