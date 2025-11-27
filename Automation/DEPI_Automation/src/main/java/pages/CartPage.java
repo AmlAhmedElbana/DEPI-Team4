@@ -11,6 +11,9 @@ public class CartPage {
     private final By checkoutButton=By.id("checkout");
     private final By removeBackpackButton=By.id("remove-sauce-labs-backpack");
     private final By firstItemName=By.className("inventory_item_name");
+    private final By firstItemDesc= By.className("inventory_item_desc");
+    private final By firstItemPrice= By.className("inventory_item_price");
+    private final By itemTitleLink= By.id("item_4_title_link");
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
@@ -34,5 +37,14 @@ public class CartPage {
 
     public String getFirstItemName() {
         return driver.findElement(firstItemName).getText();
+    }
+    public String getFirstItemDesc(){
+        return driver.findElement(firstItemDesc).getText();
+    }
+    public String getFirstItemPrice(){
+        return driver.findElement(firstItemPrice).getText();
+    }
+    public void clickItemLabel(){
+        driver.findElement(itemTitleLink).click();
     }
 }

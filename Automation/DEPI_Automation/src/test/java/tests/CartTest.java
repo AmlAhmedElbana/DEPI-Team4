@@ -45,5 +45,27 @@ public class CartTest extends BaseTest {
         String currentUrl = driver.getCurrentUrl();
         Assert.assertEquals(currentUrl, "https://www.saucedemo.com/checkout-step-one.html");
     }
+   @Test(priority = 5)
+    public void testAddedProductDetails(){
+        productsPage.addFirstProductToCart();
+        productsPage.goToCart();
+        String itemName= cartPage.getFirstItemName();
+        String itemDesc= cartPage.getFirstItemDesc();
+        String itemPrice= cartPage.getFirstItemPrice();
 
+        Assert.assertEquals(itemName,"Sauce Labs Backpack");
+        Assert.assertEquals(itemDesc,"carry.allTheThings() with the sleek, streamlined " +
+                "Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.");
+        Assert.assertEquals(itemPrice,"$29.99");
+
+   }
+   @Test(priority = 6)
+    public void testAddedItemDetailsPage(){
+        productsPage.addFirstProductToCart();
+        productsPage.goToCart();
+        cartPage.clickItemLabel();
+        String currentUrl= driver.getCurrentUrl();
+
+        Assert.assertEquals(currentUrl,"https://www.saucedemo.com/inventory-item.html?id=4");
+   }
 }

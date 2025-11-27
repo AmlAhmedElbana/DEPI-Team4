@@ -12,13 +12,13 @@ public class LoginPage {
 
     private final WebDriver driver;
 
-    // (Locators)
+
     private final By usernameField = By.id("user-name");
     private final By passwordField = By.id("password");
     private final By loginButton = By.id("login-button");
     private final By errorMessage = By.cssSelector("h3[data-test='error']");
 
-    // Constructor
+
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -41,8 +41,7 @@ public class LoginPage {
         enterPassword(password);
         clickLogin();
 
-       /* new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.urlContains("inventory.html"));*/
+
 
     }
 
@@ -56,6 +55,18 @@ public class LoginPage {
         enterPassword(password);
         clickLogin();
         return new ProductsPage(driver);
+    }
+    public String getPasswordFieldType() {
+        return driver.findElement(passwordField).getAttribute("type");
+    }
+
+
+    public boolean isErrorDisplayed() {
+        try {
+            return driver.findElement(errorMessage).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

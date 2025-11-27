@@ -1,5 +1,6 @@
 package pages;
 
+import constants.FrameworkConstants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,6 +28,7 @@ public class ProductsPage {
     }
 
     public void addFirstProductToCart() {
+        driver.manage().timeouts().implicitlyWait(FrameworkConstants.smallTimeout);
         List<WebElement> buttons = driver.findElements(addToCartButtonsLoc);
         if (!buttons.isEmpty()) {
             buttons.get(0).click();
