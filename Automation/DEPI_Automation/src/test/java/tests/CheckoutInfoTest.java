@@ -1,5 +1,4 @@
 package tests;
-
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -40,12 +39,30 @@ public class CheckoutInfoTest extends BaseTest {
         productsPage.goToCart();
         cartPage.clickCheckout();
 
-
         checkoutInfoPage.fillInfoAndContinue(fName, lName, pCode);
-
 
         String actualError = checkoutInfoPage.getErrorMessage();
         Assert.assertEquals(actualError, expectedError);
     }
 
+   @Test(priority = 4)
+    public void testCartIconClicking(){
+        productsPage.addFirstProductToCart();
+        productsPage.goToCart();
+        cartPage.clickCheckout();
+        checkoutInfoPage.clickCart();
+        String currentUrl= driver.getCurrentUrl();
+
+        Assert.assertEquals(currentUrl,"https://www.saucedemo.com/cart.html");
+   }
+   @Test(priority = 5)
+    public void testCheckoutEmptyInfo(){
+        productsPage.addFirstProductToCart();
+        productsPage.goToCart();
+        cartPage.clickCheckout();
+        checkoutInfoPage.clickContinue();
+        String currentUrl= driver.getCurrentUrl();;
+
+        Assert.assertEquals(currentUrl,"https://www.saucedemo.com/checkout-step-one.html");
+   }
 }

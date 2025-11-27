@@ -1,9 +1,6 @@
 package base;
-
-import pages.CartPage;
-import pages.CheckoutInfoPage;
-import pages.LoginPage;
-import pages.ProductsPage;
+import constants.FrameworkConstants;
+import pages.*;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,8 +11,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.HashMap;
 import java.util.Map;
 
-import java.time.Duration;
-
 public class BaseTest {
 
     protected WebDriver driver;
@@ -24,29 +19,43 @@ public class BaseTest {
     protected ProductsPage productsPage;
     protected CartPage cartPage;
     protected CheckoutInfoPage checkoutInfoPage;
+    protected CheckoutOverviewPage checkoutOverviewPage;
+    protected CheckoutCompletePage checkoutCompletePage;
 
     private void launchBrowser() {
         ChromeOptions options = new ChromeOptions();
+
+        // 1. الحل السحري: فتح المتصفح في وضع "المتصفح المتخفي"
+        // ده بيمنع كروم إنه يحفظ أي هيستوري أو كوكيز أو يشيك على الباسوردات
+        options.addArguments("--incognito");
+
+        // 2. زيادة تأكيد: وضع الضيف (بيمنع تحميل أي بروفايل شخصي)
+        options.addArguments("--guest");
+
+        // 3. قفل كل خدمات المزامنة والترجمة والإضافات اللي ممكن تطلع نوافذ
+        options.addArguments("--disable-sync");
+        options.addArguments("--disable-translate");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-default-apps");
+        options.addArguments("--disable-notifications");
+
+        // 4. محاولة إضافية لقفل مدير الباسوردات (لو Incognito مش كفاية)
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
         prefs.put("safebrowsing.enabled", false);
         options.setExperimentalOption("prefs", prefs);
 
-        options.addArguments("--disable-features=PasswordLeakDetection");
+        // 5. استبعاد سويتش "Enable Automation" (عشان يخفي الشريط الأصفر)
+        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 
-        options.addArguments("--disable-save-password-bubble");
-        options.addArguments("--disable-popup-blocking");
-        options.addArguments("--disable-infobars");
-        options.addArguments("--disable-notifications");
-
+        // 6. ضمان إن الصفحة تحمل بالكامل
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
+        driver.manage().timeouts().implicitlyWait(FrameworkConstants.timeOut);
         driver.get("https://www.saucedemo.com/v1/index.html");
 
         loginPage = new LoginPage(driver);
@@ -56,8 +65,11 @@ public class BaseTest {
     public void requiredSetup(){
         launchBrowser();
         productsPage = loginPage.loginAsStandardUser("standard_user", "secret_sauce");
+
         cartPage= new CartPage(driver);
         checkoutInfoPage= new CheckoutInfoPage(driver);
+        checkoutOverviewPage= new CheckoutOverviewPage(driver);
+        checkoutCompletePage= new CheckoutCompletePage(driver);
     }
 
     @BeforeMethod(onlyForGroups = {"noLoginRequired"})

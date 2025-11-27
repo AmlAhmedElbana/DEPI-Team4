@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import constants.FrameworkConstants;
 
 public class CheckoutInfoPage {
 
@@ -13,7 +14,7 @@ public class CheckoutInfoPage {
     private final By continueButton=By.id("continue");
     private final By cancelButton=By.id("cancel");
     private final By errorMessage= By.cssSelector("h3[data-test='error']");
-
+    private final By cartIcon= By.id("shopping_cart_container");
 
     public CheckoutInfoPage(WebDriver driver) {
         this.driver = driver;
@@ -33,6 +34,7 @@ public class CheckoutInfoPage {
     }
 
     public void clickContinue() {
+        driver.manage().timeouts().implicitlyWait(FrameworkConstants.timeOut);
         driver.findElement(continueButton).click();
     }
 
@@ -48,6 +50,12 @@ public class CheckoutInfoPage {
         enterLastName(lName);
         enterPostalCode(pCode);
         clickContinue();
-        return new CheckoutOverviewPage();
+        return new CheckoutOverviewPage(driver);
     }
+
+    public CartPage clickCart(){
+        driver.findElement(cartIcon).click();
+        return new CartPage(driver);
+    }
+
 }
