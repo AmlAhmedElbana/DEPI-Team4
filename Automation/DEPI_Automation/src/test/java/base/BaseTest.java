@@ -25,31 +25,29 @@ public class BaseTest {
     private void launchBrowser() {
         ChromeOptions options = new ChromeOptions();
 
-        // 1. الحل السحري: فتح المتصفح في وضع "المتصفح المتخفي"
-        // ده بيمنع كروم إنه يحفظ أي هيستوري أو كوكيز أو يشيك على الباسوردات
         options.addArguments("--incognito");
 
-        // 2. زيادة تأكيد: وضع الضيف (بيمنع تحميل أي بروفايل شخصي)
+
         options.addArguments("--guest");
 
-        // 3. قفل كل خدمات المزامنة والترجمة والإضافات اللي ممكن تطلع نوافذ
+
         options.addArguments("--disable-sync");
         options.addArguments("--disable-translate");
         options.addArguments("--disable-extensions");
         options.addArguments("--disable-default-apps");
         options.addArguments("--disable-notifications");
 
-        // 4. محاولة إضافية لقفل مدير الباسوردات (لو Incognito مش كفاية)
+
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
         prefs.put("safebrowsing.enabled", false);
         options.setExperimentalOption("prefs", prefs);
 
-        // 5. استبعاد سويتش "Enable Automation" (عشان يخفي الشريط الأصفر)
+
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 
-        // 6. ضمان إن الصفحة تحمل بالكامل
+
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
@@ -75,6 +73,11 @@ public class BaseTest {
     @BeforeMethod(onlyForGroups = {"noLoginRequired"})
     public void setup() {
        launchBrowser();
+    }
+
+
+    public WebDriver getDriver() {
+        return driver;
     }
 
 
