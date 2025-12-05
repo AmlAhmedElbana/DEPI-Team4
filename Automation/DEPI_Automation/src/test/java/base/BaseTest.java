@@ -28,7 +28,7 @@ public class BaseTest {
         options.addArguments("--incognito");
 
 
-        options.addArguments("--guest");
+        //options.addArguments("--guest");
 
 
         options.addArguments("--disable-sync");
