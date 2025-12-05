@@ -1,12 +1,12 @@
 # DEPI: Swag Labs Testing Project
 
-![Status](https://img.shields.io/badge/Status-In%20Progress-blue)
-![Tests](https://img.shields.io/badge/Tests-Pending-yellow)
-![Bugs Found](https://img.shields.io/badge/Bugs_Found-0-lightgrey)
+![Status](https://img.shields.io/badge/Status-Done-brightgreen)
+![Tests](https://img.shields.io/badge/Tests-Completed-green)
+![Bugs Found](https://img.shields.io/badge/Bugs_Found-14-red)
 
 ---
 
-### 📖1. Project Overview
+### 📖 1. Project Overview
 
 This project is the final graduation submission for the **[Digital Egypt Pioneers (DEPI)](https://depi.gov.eg/)** initiative, provided by the Egyptian Ministry of Communications and Information Technology (MCIT).
 
@@ -44,10 +44,10 @@ This project utilizes the following tools for management, documentation, and aut
 | **GitHub** | Version Control & Collaboration | Web (Cloud) |
 | **MS Excel** | Test Artifacts (Cases, RTM) | (Desktop / Office 365) |
 
-#### Automation Testing Stack (Future Scope)
+#### Automation Testing Stack
 | Tool | Purpose | Version |
 | :--- | :--- | :--- |
-| **Java** | Programming Language | 21 |
+| **Java** | Programming Language | 25 |
 | **Selenium** | Browser Automation Framework | 4.27.0 |
 | **TestNG** | Testing Framework | 7.10.2 |
 | **Maven** | Build & Dependency Management | (Project Default) |
@@ -55,7 +55,7 @@ This project utilizes the following tools for management, documentation, and aut
 
 ---
 
-### 🧩5. Repository Structure
+### 🧩 5. Repository Structure
 ~~~
 📂 DEPI-Swag-Labs-Testing
 ├── 📁 1-Documentation
@@ -72,18 +72,18 @@ This project utilizes the following tools for management, documentation, and aut
 
 ### 6. Quick Links
 
-* **[Project Jira Board] (https://depi-final-project-r3-ast.atlassian.net/jira/software/projects/SCRUM/boards/1)**
-* **[Master Test Plan] (1-Documentation/Test_Plan.pdf)**
+* **[Manual Testing Artifacts](https://github.com/AmlAhmedElbana/DEPI-Team4/tree/main/Manual)**
+* **[Master Test Plan](https://github.com/AmlAhmedElbana/DEPI-Team4/blob/main/Documentation/Test%20Plan.pdf)**
 
 ---
 
-### 🚀 7. How to Run (Automation - Future Scope)
+### 🚀 7. How to Run (Automation)
 
-This section details the steps to run the automation test scripts once they are developed using the Maven framework.
+This section details the steps to run the automation test scripts developed using the Maven framework.
 
 1.  **Clone the repository:**
     ```sh
-    git clone [https://github.com/YourUsername/DEPI-Swag-Labs-Testing.git](https://github.com/YourUsername/DEPI-Swag-Labs-Testing.git)
+    git clone [https://github.com/AmlAhmedElbana/DEPI-Team4.git](https://github.com/AmlAhmedElbana/DEPI-Team4.git)
     ```
 2.  **Navigate to the automation project directory:**
     ```sh
